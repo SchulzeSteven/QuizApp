@@ -81,21 +81,38 @@ let questions = [
     },
 ];
 
-let currentQuestion = 0;
+let currentQuestion = 0;   // zeigt die Aktuelle Card an (erste Frage)
 
 
 function init() {
-    document.getElementById('all-questions').innerHTML = questions.length;
+    document.getElementById('all-questions').innerHTML = questions.length;  // zeigt xx Frage on xx Fragen an (also x von 10) da in dr questions 10 JSON vorhanden sind
 
     showQuestion();
 }
 
 
+/* Zeigt die Karte an mit der Frage und dazugehörign Antworten */
 function showQuestion() {
-    let question = questions[currentQuestion];
+    let question = questions[currentQuestion];   // question ist die Variable für die Aktuelle JSON die Angezeigt werden soll --- questions ist die JSON von "let = questions"
     document.getElementById('questiontext').innerHTML = question['question'];
     document.getElementById('answer1').innerHTML = question['answer_1'];
     document.getElementById('answer2').innerHTML = question['answer_2'];
     document.getElementById('answer3').innerHTML = question['answer_3'];
     document.getElementById('answer4').innerHTML = question['answer_4'];
+}
+
+
+/* Klickbare Antworten und Ausgabe ob Richtig oder Falsch */
+function answer(selection) {   // selection beinhaltet jede onclick answer function (answer_01,answer_02,answer_03,answer_04)
+    let question = questions[currentQuestion];
+    console.log('Selected answer is ', selection);
+    let selectedAnswerNumber = selection.slice(-1);  // selection ist die Variable von den onclick answers --- das .slice(-1) nimmt nur noch den letzten Buchstaben, also die gewählte answer_0x Zahl und übergibt dies an die Variable selectedQuestionNumber
+    console.log('selected answer number is', selectedAnswerNumber)  // ausgewählte Antwort Nummer
+    console.log('Current question is ', question['right_answer'])
+
+    if(selectedAnswerNumber == question['right_answer']) {   // Richtig oder Falsch Ausgabe und log überprüfung
+        console.log('Richtige Antwort!');
+    } else {
+        console.log('Falsche Antwort!');
+    }
 }
