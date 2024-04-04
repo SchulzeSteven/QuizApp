@@ -3,9 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>QuizApp</title>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap files (css,js) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </head>
-<body>
-    
+<body onload="init()">
+
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">QuizApp</span>
+        </div>
+    </nav>
+
+    <div class="containerCard">
+        <div class="card quiz-card">
+            <img src="img/cardheader.jpg" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title" id="questiontext"></h5>
+
+                <div class="card mb-2"> <!-- mb-2 = margin bottom 2 -->
+                    <div class="card-body" id="answer1"></div>
+                </div>
+
+                <div class="card mb-2"> <!-- mb-2 = margin bottom 2 -->
+                    <div class="card-body" id="answer2"></div>
+                </div>
+
+                <div class="card mb-2"> <!-- mb-2 = margin bottom 2 -->
+                    <div class="card-body" id="answer3"></div>
+                </div>
+
+                <div class="card mb-2"> <!-- mb-2 = margin bottom 2 -->
+                    <div class="card-body" id="answer4"></div>
+                </div>
+
+                <div class="question-footer">
+                    <span><b>1</b> von <b id="all-questions"></b> Fragen</span>
+                    <button class="btn btn-primary">Nächste Frage</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
