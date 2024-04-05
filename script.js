@@ -95,10 +95,10 @@ function init() {
 function showQuestion() {
     let question = questions[currentQuestion];   // question ist die Variable für die Aktuelle JSON die Angezeigt werden soll --- questions ist die JSON von "let = questions"
     document.getElementById('questiontext').innerHTML = question['question'];
-    document.getElementById('answer1').innerHTML = question['answer_1'];
-    document.getElementById('answer2').innerHTML = question['answer_2'];
-    document.getElementById('answer3').innerHTML = question['answer_3'];
-    document.getElementById('answer4').innerHTML = question['answer_4'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
 }
 
 
@@ -107,12 +107,14 @@ function answer(selection) {   // selection beinhaltet jede onclick answer funct
     let question = questions[currentQuestion];
     console.log('Selected answer is ', selection);
     let selectedAnswerNumber = selection.slice(-1);  // selection ist die Variable von den onclick answers --- das .slice(-1) nimmt nur noch den letzten Buchstaben, also die gewählte answer_0x Zahl und übergibt dies an die Variable selectedQuestionNumber
-    console.log('selected answer number is', selectedAnswerNumber)  // ausgewählte Antwort Nummer
-    console.log('Current question is ', question['right_answer'])
+    console.log('selected answer number is', selectedAnswerNumber) ; // ausgewählte Antwort Nummer
+    console.log('Current question is ', question['right_answer']);
 
     if(selectedAnswerNumber == question['right_answer']) {   // Richtig oder Falsch Ausgabe und log überprüfung
         console.log('Richtige Antwort!');
+        document.getElementById(selection).parentNode.classList.add('bg-success');  // parentNode ist das überelement, bevor eine neue DIV erstellt wird
     } else {
         console.log('Falsche Antwort!');
+        document.getElementById(selection).parentNode.classList.add('bg-danger');
     }
 }
