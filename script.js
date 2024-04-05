@@ -110,11 +110,15 @@ function answer(selection) {   // selection beinhaltet jede onclick answer funct
     console.log('selected answer number is', selectedAnswerNumber) ; // ausgewählte Antwort Nummer
     console.log('Current question is ', question['right_answer']);
 
+    let idOfRightAnswer = `answer_${question['right_answer']}`  // greift auf die variable question zu (dann auf die JSON questions[currentQuestion] um dann die ID right_answer also answer_1 zu bekommen)
+
     if(selectedAnswerNumber == question['right_answer']) {   // Richtig oder Falsch Ausgabe und log überprüfung
         console.log('Richtige Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-success');  // parentNode ist das überelement, bevor eine neue DIV erstellt wird
     } else {
         console.log('Falsche Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
+        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
+    document.getElementById('next-button').disabled = false;
 }
