@@ -107,12 +107,12 @@ function answer(selection) {   // selection beinhaltet jede onclick answer funct
     let question = questions[currentQuestion];
     console.log('Selected answer is ', selection);
     let selectedAnswerNumber = selection.slice(-1);  // selection ist die Variable von den onclick answers --- das .slice(-1) nimmt nur noch den letzten Buchstaben, also die gewählte answer_0x Zahl und übergibt dies an die Variable selectedQuestionNumber
-    console.log('selected answer number is', selectedAnswerNumber) ; // ausgewählte Antwort Nummer
+    console.log('selected answer number is', selectedAnswerNumber); // ausgewählte Antwort Nummer
     console.log('Current question is ', question['right_answer']);
 
     let idOfRightAnswer = `answer_${question['right_answer']}`  // greift auf die variable question zu (dann auf die JSON questions[currentQuestion] um dann die ID right_answer also answer_1 zu bekommen)
 
-    if(selectedAnswerNumber == question['right_answer']) {   // Richtig oder Falsch Ausgabe und log überprüfung
+    if (selectedAnswerNumber == question['right_answer']) {   // Richtig oder Falsch Ausgabe und log überprüfung
         console.log('Richtige Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-success');  // parentNode ist das überelement, bevor eine neue DIV erstellt wird
     } else {
@@ -121,4 +121,23 @@ function answer(selection) {   // selection beinhaltet jede onclick answer funct
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
     document.getElementById('next-button').disabled = false;
+}
+
+
+function nextQuestion() {
+    currentQuestion++;     // variable der JSON wird von 0 auf 1 erhöht
+    document.getElementById('next-button').disabled = true;
+    resetAnswerButtons();
+    showQuestion();
+}
+
+function resetAnswerButtons() {
+    document.getElementById('answer_1').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_1').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_2').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_2').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_3').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_3').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_4').parentNode.classList.remove('bg-success');
 }
