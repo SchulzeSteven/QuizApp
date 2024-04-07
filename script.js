@@ -95,11 +95,14 @@ function init() {
 function showQuestion() {
 
     if (currentQuestion >= questions.length) {  // ist 10 größer oder gleich 10 dann beende das quiz, ansonsten geh zur nächsten Frage
-        // Todo: show end screen
+        // Show END
+        document.getElementById('endscreen').style = '';  // endscreen wird angezeigt
+        document.getElementById('question-body').style = 'display: none';  // card-body wird ausgeblendet
     } else {
 
+        // Show Quiz
         let question = questions[currentQuestion];   // question ist die Variable für die Aktuelle JSON die Angezeigt werden soll --- questions ist die JSON von "let = questions"
-        document.getElementById('current-question').innerHTML = currentQuestion + 1;
+        document.getElementById('current-question').innerHTML = currentQuestion + 1;  // +1 weil javascript immer bei 0 anfängt
         document.getElementById('questiontext').innerHTML = question['question'];
         document.getElementById('answer_1').innerHTML = question['answer_1'];
         document.getElementById('answer_2').innerHTML = question['answer_2'];
