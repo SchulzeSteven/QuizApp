@@ -82,8 +82,9 @@ let questions = [
 ];
 
 let currentQuestion = 0;   // zeigt die Aktuelle Card an (erste Frage)
-
 let rightQuestions = 0;   // zeigt wie viel Fragen rchtig beantwortet wurden, standard 0
+let AUDIO_SUCCES = new Audio('audio/success.mp3');
+let AUDIO_FAIL = new Audio('audio/fail.mp3');
 
 
 function init() {
@@ -145,11 +146,13 @@ function answer(selection) {   // selection beinhaltet jede onclick answer funct
     if (selectedAnswerNumber == question['right_answer']) {   // Richtig oder Falsch Ausgabe und log überprüfung
         console.log('Richtige Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-success');  // parentNode ist das überelement, bevor eine neue DIV erstellt wird
+        AUDIO_SUCCES.play();
         rightQuestions++;  // wenn richtig, dann immer 1 drauf
     } else {
         console.log('Falsche Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        AUDIO_FAIL.play();
     }
     document.getElementById('next-button').disabled = false;
 }
