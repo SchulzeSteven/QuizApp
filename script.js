@@ -100,6 +100,7 @@ function showQuestion() {
         // Show End Screen
         document.getElementById('endscreen').style = '';  // endscreen wird angezeigt
         document.getElementById('question-body').style = 'display: none';  // card-body wird ausgeblendet
+        document.getElementById('progress-bar1').style = 'display: none';
 
         document.getElementById('amount-of-right-questions').innerHTML = rightQuestions;
         document.getElementById('amount-of-questions').innerHTML = questions.length;
@@ -165,4 +166,17 @@ function resetAnswerButtons() {
     document.getElementById('answer_3').parentNode.classList.remove('bg-success');
     document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
     document.getElementById('answer_4').parentNode.classList.remove('bg-success');
+}
+
+
+function restartGame() {
+    document.getElementById('header-image').src = 'img/cardheader.jpg';  // bild tauschen
+    document.getElementById('endscreen').style = 'display: none';  // Endscreen ausblenden
+    document.getElementById('progress-bar1').style = '';  // progress-bar einblenden
+    document.getElementById('question-body').style = '';  // question-body einblenden
+
+    // wird wieder auf 0 gesetzt
+    rightQuestions = 0;
+    currentQuestion = 0;
+    init();
 }
