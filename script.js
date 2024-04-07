@@ -103,6 +103,7 @@ function showQuestion() {
 
         document.getElementById('amount-of-right-questions').innerHTML = rightQuestions;
         document.getElementById('amount-of-questions').innerHTML = questions.length;
+        document.getElementById('header-image').src = 'img/trophy.png';
     } else {
 
         // Show Quiz
