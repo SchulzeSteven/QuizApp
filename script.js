@@ -107,6 +107,13 @@ function showQuestion() {
     } else {
 
         // Show question
+        let percent = (currentQuestion + 1) / questions.length;   // aktuelle Frage durch die Gesamtfragen
+        percent = Math.round(percent * 100);  // von 0,xxxx% auf xxxx%
+        document.getElementById('progress-bar').innerHTML = `${percent} %`;  //zeigt die Zahl an
+        document.getElementById('progress-bar').style = `width: ${percent}%;`;  // ändert die width
+        console.log('FOrtchritt:', percent);
+
+
         let question = questions[currentQuestion];   // question ist die Variable für die Aktuelle JSON die Angezeigt werden soll --- questions ist die JSON von "let = questions"
         document.getElementById('current-question').innerHTML = currentQuestion + 1;  // +1 weil javascript immer bei 0 anfängt
         document.getElementById('questiontext').innerHTML = question['question'];
