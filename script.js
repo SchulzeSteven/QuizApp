@@ -60,7 +60,7 @@ let questions = [
         "answer_1": "schmerzstillend",
         "answer_2": "entzündungshemmend",
         "answer_3": "potenzsteigernd",
-        "answer_4": "fiebersenkendr",
+        "answer_4": "fiebersenkend",
         "right_answer": 3
     },
     {
@@ -86,19 +86,26 @@ let currentQuestion = 0;   // zeigt die Aktuelle Card an (erste Frage)
 
 function init() {
     document.getElementById('all-questions').innerHTML = questions.length;  // zeigt xx Frage on xx Fragen an (also x von 10) da in dr questions 10 JSON vorhanden sind
-
+    
     showQuestion();
 }
 
 
 /* Zeigt die Karte an mit der Frage und dazugehörign Antworten */
 function showQuestion() {
-    let question = questions[currentQuestion];   // question ist die Variable für die Aktuelle JSON die Angezeigt werden soll --- questions ist die JSON von "let = questions"
-    document.getElementById('questiontext').innerHTML = question['question'];
-    document.getElementById('answer_1').innerHTML = question['answer_1'];
-    document.getElementById('answer_2').innerHTML = question['answer_2'];
-    document.getElementById('answer_3').innerHTML = question['answer_3'];
-    document.getElementById('answer_4').innerHTML = question['answer_4'];
+
+    if (currentQuestion >= questions.length) {  // ist 10 größer oder gleich 10 dann beende das quiz, ansonsten geh zur nächsten Frage
+        // Todo: show end screen
+    } else {
+
+        let question = questions[currentQuestion];   // question ist die Variable für die Aktuelle JSON die Angezeigt werden soll --- questions ist die JSON von "let = questions"
+        document.getElementById('current-question').innerHTML = currentQuestion + 1;
+        document.getElementById('questiontext').innerHTML = question['question'];
+        document.getElementById('answer_1').innerHTML = question['answer_1'];
+        document.getElementById('answer_2').innerHTML = question['answer_2'];
+        document.getElementById('answer_3').innerHTML = question['answer_3'];
+        document.getElementById('answer_4').innerHTML = question['answer_4'];
+    }
 }
 
 
