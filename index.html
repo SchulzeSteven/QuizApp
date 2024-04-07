@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 </head>
+
 <body onload="init()">
 
     <nav class="navbar bg-body-tertiary">
@@ -30,7 +32,17 @@
 
             <!-- diese div ist standard aus -->
             <div class="card-body" id="endscreen" style="display: none;">
-                Quiz beendet!
+                <div class="text-center">
+                    Quiz beendet!
+                </div>
+
+                <div>
+                    <img class="width-100" src="img/trophy.png">
+                </div>
+
+                <div class="text-center">
+                    Du hast <b>xxx</b> Fragen von <b>xxx</b> richtig beantwortet.
+                </div>
             </div>
 
             <!-- diese div ist standard an -->
@@ -55,11 +67,13 @@
 
                 <div class="question-footer">
                     <span><b id="current-question"></b> von <b id="all-questions"></b> Fragen</span>
-                    <button onclick="nextQuestion()" class="btn btn-primary" id="next-button" disabled>Nächste Frage</button>
+                    <button onclick="nextQuestion()" class="btn btn-primary" id="next-button" disabled>Nächste
+                        Frage</button>
                 </div>
             </div>
         </div>
     </div>
 
 </body>
+
 </html>
