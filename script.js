@@ -83,6 +83,8 @@ let questions = [
 
 let currentQuestion = 0;   // zeigt die Aktuelle Card an (erste Frage)
 
+let rightQuestions = 0;   // zeigt wie viel Fragen rchtig beantwortet wurden, standard 0
+
 
 function init() {
     document.getElementById('all-questions').innerHTML = questions.length;  // zeigt xx Frage on xx Fragen an (also x von 10) da in dr questions 10 JSON vorhanden sind
@@ -98,6 +100,9 @@ function showQuestion() {
         // Show END
         document.getElementById('endscreen').style = '';  // endscreen wird angezeigt
         document.getElementById('question-body').style = 'display: none';  // card-body wird ausgeblendet
+
+        document.getElementById('amount-of-right-questions').innerHTML = rightQuestions;
+        document.getElementById('amount-of-questions').innerHTML = questions.length;
     } else {
 
         // Show Quiz
@@ -125,6 +130,7 @@ function answer(selection) {   // selection beinhaltet jede onclick answer funct
     if (selectedAnswerNumber == question['right_answer']) {   // Richtig oder Falsch Ausgabe und log überprüfung
         console.log('Richtige Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-success');  // parentNode ist das überelement, bevor eine neue DIV erstellt wird
+        rightQuestions++;  // wenn richtig, dann immer 1 drauf
     } else {
         console.log('Falsche Antwort!');
         document.getElementById(selection).parentNode.classList.add('bg-danger');
@@ -140,6 +146,7 @@ function nextQuestion() {
     resetAnswerButtons();
     showQuestion();
 }
+
 
 function resetAnswerButtons() {
     document.getElementById('answer_1').parentNode.classList.remove('bg-success');
