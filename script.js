@@ -95,34 +95,40 @@ function init() {
 
 /* Zeigt die Karte an mit der Frage und dazugehörign Antworten */
 function showQuestion() {
-    if (currentQuestion >= questions.length) {  // ist 10 größer oder gleich 10 dann beende das quiz, ansonsten geh zur nächsten Frage
-        // Show End Screen
+    if (gameIsOver()) {  // ist 10 größer oder gleich 10 dann beende das quiz, ansonsten geh zur nächsten Frage
         endscreen();
     } else {
-        // Show question
+        updateProgressBar();
         showCard();
     }
 }
 
 
+function gameIsOver() {
+    return currentQuestion >= questions.length;  // ist 10 größer oder gleich 10 dann beende das quiz, ansonsten geh zur nächsten Frage
+}
+
+// Show End Screen
 function endscreen() {
     document.getElementById('endscreen').style = '';  // endscreen wird angezeigt
     document.getElementById('question-body').style = 'display: none';  // card-body wird ausgeblendet
     document.getElementById('progress-bar1').style = 'display: none';
-
     document.getElementById('amount-of-right-questions').innerHTML = rightQuestions;
     document.getElementById('amount-of-questions').innerHTML = questions.length;
     document.getElementById('header-image').src = 'img/trophy.png';
 }
 
-
-function showCard() {
+// Show question
+function updateProgressBar() {
     let percent = (currentQuestion + 1) / questions.length;   // aktuelle Frage durch die Gesamtfragen
     percent = Math.round(percent * 100);  // von 0,xxxx% auf xxxx%
     document.getElementById('progress-bar').innerHTML = `${percent} %`;  //zeigt die Zahl an
     document.getElementById('progress-bar').style = `width: ${percent}%;`;  // ändert die width
     console.log('FOrtchritt:', percent);
+}
 
+
+function showCard() {
     let question = questions[currentQuestion];   // question ist die Variable für die Aktuelle JSON die Angezeigt werden soll --- questions ist die JSON von "let = questions"
     document.getElementById('current-question').innerHTML = currentQuestion + 1;  // +1 weil javascript immer bei 0 anfängt
     document.getElementById('questiontext').innerHTML = question['question'];
