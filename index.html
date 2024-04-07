@@ -26,7 +26,14 @@
     <div class="containerCard">
         <div class="card quiz-card">
             <img src="img/cardheader.jpg" class="card-img-top">
-            <div class="card-body">
+
+            <!-- diese div ist standard aus -->
+            <div class="card-body" id="endscreen" style="display: none;">
+                Quiz beendet!
+            </div>
+
+            <!-- diese div ist standard an -->
+            <div class="card-body" id="question-body">
                 <h5 class="card-title" id="questiontext"></h5>
 
                 <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')"> <!-- mb-2 = margin bottom 2 -->
