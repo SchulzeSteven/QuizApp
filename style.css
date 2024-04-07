@@ -42,3 +42,7 @@
     font-size: 38px;
     margin-bottom: 32px;
 }
+
+.progress {
+    border-radius: 0px !important;
+}
